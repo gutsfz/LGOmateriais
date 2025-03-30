@@ -73,6 +73,28 @@
         .card-historia:hover .icone-historia {
             transform: scale(1.1);
         }
+        /* Menu mobile */
+        .menu-mobile {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .menu-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                background: black;
+                padding: 10px;
+            }
+            .menu-mobile a {
+                color: white;
+                text-align: center;
+                padding: 10px;
+                border-bottom: 1px solid white;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="font-['Poppins']">
@@ -82,12 +104,22 @@
             <a href="index.html" class="flex items-center">
                 <img src="assets/logo.jpg" alt="LGO Logo" class="h-24">
             </a>
-            <div class="hidden md:flex space-x-8 text-white">
+            <div class="hidden md:flex space-x-8 text-white desktop-menu">
                 <a href="index.html" class="hover:text-vermelho transition">Início</a>
                 <a href="sobre.html" class="text-vermelho">Sobre Nós</a>
                 <a href="contato.html" class="hover:text-vermelho transition">Contato</a>
             </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </nav>
+        <div id="mobile-menu" class="menu-mobile hidden">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
+        </div>
     </header>
 
     <!-- Banner -->
@@ -103,7 +135,7 @@
     <!-- História -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-xl mx-auto">
                 <div class="grid gap-8">
                     <div class="card-historia p-8">
                         <div class="flex items-center mb-6">
@@ -145,36 +177,6 @@
         </div>
     </section>
 
-    <!-- Valores -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16">Nossos Valores</h2>
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="card-historia p-8 text-center">
-                    <div class="icone-historia mx-auto mb-6">
-                        <i class="fas fa-heart text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Compromisso</h3>
-                    <p class="text-gray-600">Dedicação total à satisfação dos nossos clientes</p>
-                </div>
-                <div class="card-historia p-8 text-center">
-                    <div class="icone-historia mx-auto mb-6">
-                        <i class="fas fa-award text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Qualidade</h3>
-                    <p class="text-gray-600">Produtos e serviços de excelência</p>
-                </div>
-                <div class="card-historia p-8 text-center">
-                    <div class="icone-historia mx-auto mb-6">
-                        <i class="fas fa-handshake text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Confiança</h3>
-                    <p class="text-gray-600">Relacionamentos duradouros com nossos clientes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Rodapé -->
     <footer class="bg-black text-white py-12">
         <div class="container mx-auto px-4">
@@ -195,25 +197,24 @@
                     <div class="flex space-x-4 mt-6">
                         <a href="https://www.facebook.com/share/1DAsGsfikp/" target="_blank" 
                            class="btn-padrao w-12 h-12 flex items-center justify-center bg-cinza hover:bg-vermelho transition">
-                            <i class="fab fa-facebook-f text-lg"></i>
+                            <i class="fab fa-facebook-f text-white"></i>
                         </a>
-                        <a href="https://www.instagram.com/lgo.materiaisdeconstrucao?igsh=NWQ5d3BxOTN5aWZx" target="_blank"
+                        <a href="https://www.instagram.com/lgo_materiais_construcao/" target="_blank" 
                            class="btn-padrao w-12 h-12 flex items-center justify-center bg-cinza hover:bg-vermelho transition">
-                            <i class="fab fa-instagram text-lg"></i>
+                            <i class="fab fa-instagram text-white"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-300">&copy; 2024 LGO Materiais de Construção. Todos os direitos reservados.</p>
-            </div>
         </div>
     </footer>
 
-    <!-- Botão WhatsApp -->
-    <a href="https://wa.me/5542988237878" rel="noopener noreferrer" 
-       class="fixed bottom-8 right-8 bg-green-500 text-white p-4 btn-padrao shadow-xl hover:bg-green-600 transition">
-        <i class="fab fa-whatsapp text-3xl"></i>
-    </a>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>

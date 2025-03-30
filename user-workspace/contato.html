@@ -72,46 +72,58 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-                padding: 0 1rem;
+            .menu-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                background: black;
+                padding: 10px;
             }
-            .grid {
-                grid-template-columns: 1fr;
+            .menu-mobile a {
+                color: white;
+                text-align: center;
+                padding: 10px;
+                border-bottom: 1px solid white;
             }
-            .md:grid-cols-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                max-width: 100%;
-                padding: 0 1rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .md:grid-cols-3 {
-                grid-template-columns: 1fr;
+            .desktop-menu {
+                display: none;
             }
         }
+
     </style>
 </head>
 <body class="font-['Poppins']">
     <!-- Cabeçalho -->
-    <header class="bg-black">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="assets/logo.jpg" alt="LGO Logo" class="h-24">
-            </a>
-            <div class="hidden md:flex space-x-8 text-white">
-                <a href="index.html" class="hover:text-vermelho transition">Início</a>
-                <a href="sobre.html" class="hover:text-vermelho transition">Sobre Nós</a>
-                <a href="contato.html" class="text-vermelho">Contato</a>
-            </div>
-        </nav>
-    </header>
+<header class="bg-black">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center">
+            <img src="assets/logo.jpg" alt="LGO Logo" class="h-24">
+        </a>
+        <div class="hidden md:flex space-x-8 text-white">
+            <a href="index.html" class="hover:text-vermelho transition">Início</a>
+            <a href="sobre.html" class="hover:text-vermelho transition">Sobre Nós</a>
+            <a href="contato.html" class="text-vermelho">Contato</a>
+        </div>
+        <div class="md:hidden">
+            <button id="menu-toggle" class="text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="menu-mobile hidden">
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre Nós</a>
+        <a href="contato.html" class="text-vermelho">Contato</a>
+    </div>
+</header>
+
+<!-- Script de controle do menu mobile -->
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+        var menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>
 
     <!-- Banner -->
     <section class="fundo-principal bg-cover bg-center min-h-[60vh] flex items-center" style="background-image: url('assets/exterior loja.jpg'); background-position: center 15%;">
